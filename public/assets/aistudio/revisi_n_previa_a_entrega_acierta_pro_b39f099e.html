@@ -1,0 +1,265 @@
+<!DOCTYPE html><html lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport">
+<title>Revisión previa a entrega - Acierta Pro</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700;800&amp;family=Plus+Jakarta+Sans:wght@500;600;700&amp;family=Space+Grotesk:wght@600;700;800&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          surface: '#fdf9f1',
+          'surface-dim': '#dddad2',
+          ink: '#1c1c17',
+          yellow: '#ffd13b',
+          cyan: '#6bf6ff',
+          magenta: '#b7006e',
+          coral: '#ff5252',
+          'coral-light': '#ffe8e8',
+          pink: '#ffc7da',
+          emerald: '#10b981',
+          'emerald-light': '#e8f8f0',
+          'border-ink': '#1c1c17',
+        },
+        fontFamily: {
+          sans: ['"Space Grotesk"', 'sans-serif'],
+          mono: ['"JetBrains Mono"', 'monospace'],
+          body: ['"Plus Jakarta Sans"', 'sans-serif'],
+        },
+        boxShadow: {
+          'hard-sm': '2px 2px 0px #1c1c17',
+          'hard': '3px 3px 0px #1c1c17',
+          'hard-lg': '4px 4px 0px #1c1c17',
+          'hard-pressed': '1px 1px 0px #1c1c17',
+        }
+      }
+    }
+  }
+</script>
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    background-color: #e6e2da;
+    color: #1c1c17;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+</style>
+</head>
+<body class="min-h-screen bg-[#f1ede6] flex flex-col items-center justify-start text-ink antialiased p-0 selection:bg-yellow selection:text-ink">
+<!-- Mobile Portrait Container (Target: ~390px width) -->
+<div class="w-full max-w-[390px] min-h-screen flex flex-col bg-surface border-x-[2.5px] border-ink shadow-hard-lg relative">
+<!-- Top App Bar / Header -->
+<header class="sticky top-0 z-30 bg-surface/95 backdrop-blur-md border-b-[2.5px] border-ink px-3.5 py-2.5 flex items-center justify-between">
+<!-- SVG Logo Lockup -->
+<div class="flex items-center gap-2">
+<svg class="w-7 h-7 flex-shrink-0" fill="none" viewBox="-70 -70 140 140">
+<path d="M6,-56L62,0L6,62L-50,6Z" fill="#1c1c17" stroke="#1c1c17" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M0,-62L62,0L0,62L-62,0Z" fill="#ffd13b" stroke="#1c1c17" stroke-linejoin="round" stroke-width="6"></path>
+<path d="M0,-44L44,0L0,44L-44,0Z" fill="#6bf6ff" stroke="#1c1c17" stroke-linejoin="round" stroke-width="4.5"></path>
+<path d="M0,-28L28,0L0,28L-28,0Z" fill="#b7006e" stroke="#1c1c17" stroke-linejoin="round" stroke-width="4.5"></path>
+<path d="M-13,2L-4,13L15,-12" fill="none" stroke="#1c1c17" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"></path>
+<path d="M-13,2L-4,13L15,-12" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+</svg>
+<div class="flex items-baseline">
+<span class="font-extrabold text-lg tracking-tight text-ink">acierta</span>
+<span class="ml-1 text-[11px] font-extrabold text-white bg-magenta border-[1.5px] border-ink px-1.5 py-0.2 rounded-full shadow-[1.5px_1.5px_0px_#1c1c17] -rotate-3">Pro</span>
+</div>
+</div>
+<!-- Action Button Continuar -->
+<button aria-label="Continuar simulacro" class="px-3 py-1 bg-white hover:bg-surface-dim border-[2px] border-ink rounded-lg shadow-hard-sm font-bold text-xs flex items-center gap-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all" type="button"><svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M10 19l-7-7m0 0l7-7m-7 7h18" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="">Volver al examen</span></button>
+</header>
+<!-- Main Content Area -->
+<main class="flex-1 px-3.5 py-4 flex flex-col gap-4 pb-36">
+<!-- Context Tag & Title -->
+<section class="flex flex-col gap-1.5">
+<div class="flex items-center justify-between"><span class="inline-flex items-center gap-1.5 px-2 py-0.5 bg-cyan border-[2px] border-ink rounded-md shadow-hard-sm font-mono text-[11px] font-bold uppercase tracking-wider text-ink"><svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" stroke-linecap="round" stroke-linejoin="round"></path></svg>Sesión 1</span><span class="font-mono text-[11px] text-ink/75 font-bold">SIM-2026-2-88F4</span></div>
+<h1 class="text-xl font-extrabold tracking-tight text-ink leading-snug mt-0.5">
+          Revisión previa a entrega
+        </h1>
+<p class="text-xs font-medium text-ink/80 leading-relaxed font-body">
+          Verifica el estado de tus respuestas antes de consolidar el envío. Una vez entregado no podrás modificar tus selecciones.
+        </p>
+</section>
+<!-- TARJETA 1: TIEMPO RESTANTE -->
+<section class="bg-white border-[2.5px] border-ink rounded-xl p-3.5 shadow-hard flex flex-col gap-2.5 relative overflow-hidden"><div class="absolute top-0 right-0 w-14 h-14 pointer-events-none opacity-20"><svg fill="none" stroke="#1c1c17" stroke-width="2" viewBox="0 0 50 50"><polygon fill="#ffd13b" points="50,0 25,0 50,25"></polygon><polygon fill="#6bf6ff" points="50,25 25,50 50,50"></polygon><polyline points="0,0 50,50"></polyline><polyline points="25,0 50,25"></polyline></svg></div><div class="flex items-center gap-3"><span class="w-8 h-8 rounded-lg bg-yellow border-[2px] border-ink flex items-center justify-center shadow-hard-sm flex-shrink-0"><svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M12 6v6l4 2" stroke-linecap="round" stroke-linejoin="round"></path></svg></span><div class="flex flex-col"><span class="text-[10px] font-bold uppercase tracking-wider text-ink/70 block">Tiempo restante</span><span class="font-mono text-lg font-extrabold text-ink tracking-tight">00:34:18 <span class="text-xs text-ink/60 font-semibold">de 04:40:00</span></span></div></div><div class="w-full h-2.5 bg-surface-dim border-[2px] border-ink rounded-full overflow-hidden p-0.5 mt-0.5"><div class="h-full bg-yellow border-r-[2px] border-ink rounded-full" style="width: 87%;"></div></div></section>
+<!-- TARJETA 2: BALANCE DE RESPUESTAS (3 COLUMNAS MÓVIL) -->
+<section class="grid grid-cols-3 gap-2">
+<!-- Respondidas -->
+<div class="bg-white border-[2.5px] border-ink rounded-xl p-2.5 shadow-hard flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="w-5 h-5 rounded-md bg-emerald/20 border-[1.5px] border-ink flex items-center justify-center">
+<svg class="w-3 h-3 stroke-[3] text-emerald" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-mono text-[9px] font-bold text-ink/60 uppercase">Hechas</span>
+</div>
+<div class="mt-2">
+<div class="font-mono text-xl font-extrabold text-ink leading-none">130</div>
+<div class="text-[10px] font-bold text-ink/80 mt-1 leading-tight">Respondidas</div>
+</div>
+</div>
+<!-- En blanco -->
+<div class="bg-white border-[2.5px] border-ink rounded-xl p-2.5 shadow-hard flex flex-col justify-between ring-2 ring-coral/30">
+<div class="flex items-center justify-between">
+<span class="w-5 h-5 rounded-md bg-coral/20 border-[1.5px] border-ink flex items-center justify-center">
+<svg class="w-3 h-3 stroke-[3] text-coral" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-mono text-[9px] font-bold text-coral uppercase">Faltan</span>
+</div>
+<div class="mt-2">
+<div class="font-mono text-xl font-black text-coral leading-none">5</div>
+<div class="text-[10px] font-bold text-coral mt-1 leading-tight">En blanco</div>
+</div>
+</div>
+<!-- Marcadas para Revisión -->
+<div class="bg-white border-[2.5px] border-ink rounded-xl p-2.5 shadow-hard flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="w-5 h-5 rounded-md bg-pink border-[1.5px] border-ink flex items-center justify-center">
+<svg class="w-3 h-3 stroke-[2.5] text-magenta" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</span>
+<span class="font-mono text-[9px] font-bold text-magenta uppercase">Dudas</span>
+</div>
+<div class="mt-2">
+<div class="font-mono text-xl font-black text-magenta leading-none">3</div>
+<div class="text-[10px] font-bold text-ink/80 mt-1 leading-tight">Marcadas</div>
+</div>
+</div>
+</section>
+<!-- AVISO DE CALIFICACIÓN SABER PRO -->
+<section class="bg-yellow/35 border-[2.5px] border-ink rounded-xl p-3 shadow-hard flex items-start gap-2.5"><div class="w-7 h-7 rounded-lg bg-yellow border-[2px] border-ink flex-shrink-0 flex items-center justify-center shadow-hard-sm mt-0.5"><svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="flex-1 flex flex-col gap-0.5"><h4 class="text-[11px] font-black uppercase tracking-wider text-ink">Antes de entregar</h4><p class="text-[11px] font-medium text-ink/85 leading-snug font-body">Revisa las preguntas en blanco. Una vez entregado no podrás modificar tus respuestas.</p></div></section>
+<!-- DESGLOSE POR MÓDULOS DEL EXAMEN -->
+<section class="bg-white border-[2.5px] border-ink rounded-xl p-3.5 shadow-hard flex flex-col gap-3"><div class="flex items-center justify-between border-b-[2px] border-ink pb-2">
+<div class="flex items-center gap-1.5">
+<svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M4 6h16M4 10h16M4 14h16M4 18h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<h3 class="font-bold text-xs uppercase tracking-wider text-ink">Estado por Módulo</h3>
+</div>
+<span class="font-mono text-[10px] font-bold text-ink/70">Total: 135 reactivos + 1 tarea escrita</span>
+</div>
+<!-- Módulo 1: Lectura Crítica -->
+<div class="border-[2px] border-ink rounded-lg p-2.5 bg-surface flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald border border-ink"></span>
+<span class="text-[11px] font-extrabold uppercase">Módulo 1 · Lectura Crítica (30 preguntas)</span>
+</div>
+<span class="text-[9px] font-mono font-bold bg-white text-emerald px-1.5 py-0.5 border border-ink rounded">30 respondidas · 0 pendientes</span>
+</div>
+<div class="flex items-center justify-between text-[11px] pt-1 border-t border-ink/10">
+<span class="text-ink/80 font-medium font-body">30 de 30 respondidas</span>
+<span class="font-mono text-[11px] font-bold text-emerald">100%</span>
+</div>
+</div>
+<!-- Módulo 2: Razonamiento Cuantitativo -->
+<div class="border-[2px] border-ink rounded-lg p-2.5 bg-surface flex flex-col gap-2"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-coral border border-ink"></span><span class="text-[11px] font-extrabold uppercase">Módulo 2 · Razonamiento Cuantitativo (30 preguntas)</span></div><span class="text-[9px] font-mono font-bold bg-coral/20 text-coral px-1.5 py-0.5 border border-ink rounded font-black">2 pendientes</span></div><div class="flex flex-wrap gap-1 pt-0.5"><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#31 ✓</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#32 ✓</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-pink border border-ink rounded shadow-hard-sm text-magenta font-black">#35 ⚑</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-coral-light text-coral border border-ink rounded shadow-hard-sm font-black">#37 ?</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#38 ✓</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-coral-light text-coral border border-ink rounded shadow-hard-sm font-black">#42 ?</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">... 28 ✓</span></div></div>
+<!-- Módulo 3: Competencias Ciudadanas -->
+<div class="border-[2px] border-ink rounded-lg p-2.5 bg-surface flex flex-col gap-2">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-coral border border-ink"></span>
+<span class="text-[11px] font-extrabold uppercase">Módulo 3 · Competencias Ciudadanas (30 preguntas)</span>
+</div>
+<span class="text-[9px] font-mono font-bold bg-coral/20 text-coral px-1.5 py-0.5 border border-ink rounded font-black">1 pendiente</span>
+</div>
+<div class="flex flex-wrap gap-1 pt-0.5">
+<span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#61 ✓</span>
+<span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-pink border border-ink rounded shadow-hard-sm text-magenta font-black">#62 ⚑</span>
+<span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-coral-light text-coral border border-ink rounded shadow-hard-sm font-black">#63 ?</span>
+<span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#64 ✓</span>
+<span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">... 29 ✓</span>
+</div>
+</div>
+<!-- Módulo 4: Comunicación Escrita -->
+<div class="border-[2px] border-ink rounded-lg p-2.5 bg-surface flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald border border-ink"></span>
+<span class="text-[11px] font-extrabold uppercase">Módulo 4 · Comunicación Escrita</span>
+</div>
+<span class="text-[9px] font-mono font-bold bg-white px-1.5 py-0.5 border border-ink rounded">1 texto argumentativo</span>
+</div>
+<div class="flex items-center justify-between text-[11px] pt-1 border-t border-ink/10">
+<span class="text-ink/80 font-medium font-body">Borrador completado (210 palabras)</span>
+<button class="font-bold text-ink underline hover:text-magenta text-[11px] flex items-center gap-0.5" type="button">
+<span class="">Revisar texto</span>
+<svg class="w-3 h-3 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+</button>
+</div>
+</div>
+<!-- Módulo 5: Inglés -->
+<div class="border-[2px] border-ink rounded-lg p-2.5 bg-surface flex flex-col gap-2"><div class="flex items-center justify-between"><div class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-coral border border-ink"></span><span class="text-[11px] font-extrabold uppercase">Módulo 5 · Inglés (Partes 1 a 7, 45 preguntas)</span></div><span class="text-[9px] font-mono font-bold bg-coral/20 text-coral px-1.5 py-0.5 border border-ink rounded font-black">2 pendientes</span></div><div class="flex flex-wrap gap-1 pt-0.5"><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-pink border border-ink rounded shadow-hard-sm text-magenta font-black">#92 ⚑</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">#93 ✓</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-coral-light text-coral border border-ink rounded shadow-hard-sm font-black">#105 ?</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-coral-light text-coral border border-ink rounded shadow-hard-sm font-black">#118 ?</span><span class="px-1.5 py-0.5 text-[11px] font-mono font-bold bg-emerald-light border border-ink rounded shadow-hard-sm">... 43 ✓</span></div></div></section>
+<!-- CONVENCIONES VISUALES -->
+<section class="bg-white border-[2px] border-ink rounded-lg p-2.5 flex items-center justify-between shadow-hard-sm">
+<span class="font-bold text-ink/70 uppercase text-[9px] tracking-wider font-mono">Convenciones:</span>
+<div class="flex items-center gap-2.5">
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 bg-emerald/20 border border-ink rounded-sm"></span>
+<span class="font-bold text-[10px]">Respondida</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 bg-coral/30 border border-ink rounded-sm"></span>
+<span class="font-bold text-[10px]">En blanco</span>
+</div>
+<div class="flex items-center gap-1">
+<span class="w-2.5 h-2.5 bg-pink border border-ink rounded-sm"></span>
+<span class="font-bold text-[10px]">Marcada</span>
+</div>
+</div>
+</section>
+<!-- BOTONES DE ACCIÓN RÁPIDA -->
+<section class="flex gap-2">
+<button class="flex-1 py-2 px-2.5 bg-white hover:bg-surface-dim border-[2px] border-ink rounded-xl shadow-hard font-bold text-xs flex items-center justify-center gap-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all" type="button">
+<svg class="w-3.5 h-3.5 text-coral stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M13 5l7 7-7 7M5 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Ir a la 1ª sin responder</span>
+</button>
+<button class="flex-1 py-2 px-2.5 bg-white hover:bg-surface-dim border-[2px] border-ink rounded-xl shadow-hard font-bold text-xs flex items-center justify-center gap-1 active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all" type="button">
+<svg class="w-3.5 h-3.5 text-magenta stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Ir a marcadas (3)</span>
+</button>
+</section>
+</main>
+<!-- FIXED BOTTOM BAR: CTA DE ENTREGA DEFINITIVA -->
+<footer class="fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md border-t-[2.5px] border-ink p-3 max-w-[390px] mx-auto flex flex-col gap-2">
+<!-- Checkbox de confirmación -->
+<label class="flex items-start gap-2 cursor-pointer select-none">
+<input class="w-4 h-4 mt-0.5 rounded border-[2px] border-ink text-yellow focus:ring-0 focus:ring-offset-0 cursor-pointer accent-yellow" id="confirm-submit" type="checkbox">
+<span class="text-[11px] font-bold text-ink leading-tight">
+          Entiendo que esta acción finaliza la prueba y calculará el puntaje global.
+        </span>
+</label>
+<!-- Botones de Acción Primaria y Secundaria -->
+<div class="flex items-center gap-2">
+<button class="w-1/3 py-2.5 px-2 bg-white hover:bg-surface-dim border-[2.5px] border-ink rounded-xl shadow-hard font-bold text-xs text-center active:translate-x-0.5 active:translate-y-0.5 active:shadow-none transition-all flex items-center justify-center gap-1" type="button">
+<svg class="w-3.5 h-3.5 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M15 19l-7-7 7-7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="">Volver</span>
+</button>
+<!-- CTA Entregar simulacro en amarillo brillante con sombra dura -->
+<button class="flex-1 py-2.5 px-3 bg-yellow hover:bg-[#ffc820] border-[2.5px] border-ink rounded-xl shadow-hard font-extrabold text-xs text-ink flex items-center justify-center gap-1.5 active:translate-x-0.5 active:translate-y-0.5 active:shadow-hard-pressed transition-all" type="button">
+<span class="">Entregar Simulacro</span>
+<svg class="w-4 h-4 stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+<path d="M5 13l4 4L19 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</footer>
+</div>
+
+
+
+
+</body></html>

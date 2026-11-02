@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1, viewport-fit=cover" name="viewport"/>
+<title>aciertaPro · Splash</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;700&amp;family=Space+Grotesk:wght@700&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --surface:#fdf9f1; --ink:#1c1c17; --page:#ece8e0;
+  --yellow:#ffd13b; --cyan:#6bf6ff; --teal:#00696e; --mag:#b7006e; --pink:#ffc7da;
+}
+html,body{
+  height:100%;
+  margin:0;
+  padding:0;
+  background:var(--page);
+  color:var(--ink);
+  font-family:"Space Grotesk","Avenir Next","Segoe UI",system-ui,sans-serif;
+  overflow:hidden;
+}
+
+/* Fullscreen app container */
+.app-screen {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  max-width: 480px;
+  margin: 0 auto;
+  background: var(--surface);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 0 24px rgba(28,28,23,0.15);
+}
+
+/* Wayuu top & bottom borders */
+.wayuu-banner {
+  height: 24px;
+  background: #1c1c17;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding: 0 12px;
+  color: #ffd13b;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  z-index: 20;
+}
+
+.stage-wrapper {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: 100%;
+  container-type: size;
+  overflow: hidden;
+}
+
+svg.canvas-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* ---------- Animación ---------- */
+.dr{stroke-dasharray:1 1;stroke-dashoffset:0}
+.play .dr{animation:draw 1.7s cubic-bezier(.5,0,.3,1) both}
+.play .a{animation-delay:.1s}
+.play .b{animation-delay:.7s}
+@keyframes draw{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}
+
+#ribbons{transform-origin:180px 270px;opacity:.25;transform:scale(1.05)}
+.play #ribbons{animation:away 1s 3.1s cubic-bezier(.6,0,.4,1) both}
+@keyframes away{from{opacity:1;transform:scale(1)}to{opacity:.22;transform:scale(1.05)}}
+
+.sticker{transform-origin:0 0}
+.play .sticker{animation:pop .6s 3.4s cubic-bezier(.3,1.5,.5,1) both}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+
+.logo{transform-origin:0 0}
+.play .logo{animation:logo .9s 3.75s both,sway 2.8s 5s ease-in-out infinite}
+@keyframes logo{0%{transform:scale(0) rotate(-60deg)}55%{transform:scale(1.22) rotate(8deg)}75%{transform:scale(.92) rotate(-3deg)}100%{transform:scale(1) rotate(0)}}
+@keyframes sway{0%,100%{transform:rotate(0) translateY(0)}50%{transform:rotate(-3deg) translateY(-4px)}}
+.play .tick{animation:draw .4s 4.5s ease-out both}
+
+.cf{transform:translate(var(--x),var(--y));transform-box:fill-box;transform-origin:center}
+.play .cf{animation:burst .9s 4.2s cubic-bezier(.2,.9,.3,1) both}
+@keyframes burst{from{transform:translate(0,0) scale(0) rotate(0)}35%{transform:translate(calc(var(--x)*.7),calc(var(--y)*.7)) scale(1.3) rotate(120deg)}to{transform:translate(var(--x),var(--y)) scale(1) rotate(200deg)}}
+
+/* Kana badge pop effects */
+.kana-badge {
+  position: absolute;
+  font-family: "Space Grotesk", sans-serif;
+  font-weight: 900;
+  border: 2px solid var(--ink);
+  box-shadow: 2px 2px 0 var(--ink);
+  border-radius: 8px;
+  line-height: 1;
+  pointer-events: none;
+}
+.play .k1 { animation: pop .5s 3.9s cubic-bezier(.3,1.5,.5,1) both; }
+.play .k2 { animation: pop .5s 4.1s cubic-bezier(.3,1.5,.5,1) both; }
+
+/* ---------- UI en HTML ---------- */
+.ui{position:absolute;left:0;right:0;top:57%;display:flex;flex-direction:column;align-items:center;gap:12px;z-index:10}
+.word{display:flex;align-items:center;gap:8px;font-weight:700;font-size:46px;letter-spacing:-.03em;line-height:1}
+.word .l{display:inline-block}
+.play .word .l{animation:drop .6s calc(4.6s + var(--i)*.06s) cubic-bezier(.3,1.6,.5,1) both}
+@keyframes drop{from{opacity:0;transform:translateY(-30px) rotate(-12deg) scale(.6)}to{opacity:1;transform:none}}
+
+.pill{display:inline-block;background:var(--mag);color:#fff;border:3px solid var(--ink);border-radius:14px;padding:3px 12px 5px;
+  box-shadow:4px 4px 0 var(--ink);transform:rotate(-4deg);font-size:28px;}
+.play .pill{animation:pillin .6s 5.15s cubic-bezier(.3,1.7,.5,1) both}
+@keyframes pillin{from{opacity:0;transform:rotate(-30deg) scale(0)}to{opacity:1;transform:rotate(-4deg) scale(1)}}
+
+.tagline {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--teal);
+  background: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 99px;
+  padding: 4px 14px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+.play .tagline { animation: pop .5s 5.3s cubic-bezier(.3,1.5,.5,1) both; }
+
+@property --n{syntax:'<integer>';initial-value:100;inherits:true}
+.loader{position:absolute;left:24px;right:24px;bottom:32px;display:flex;flex-direction:column;gap:12px;z-index:10}
+.lrow{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.lab{position:relative;height:24px;flex:1;font-weight:700;font-size:13px;letter-spacing:.04em;text-transform:uppercase}
+.lab span{position:absolute;left:0;top:0;line-height:24px;white-space:nowrap;opacity:0}
+.lab .s3{opacity:1}
+.play .lab .s1{animation:s1 6s .2s both}
+.play .lab .s2{animation:s2 6s .2s both}
+.play .lab .s3{animation:s3 6s .2s both}
+@keyframes s1{0%,30%{opacity:1;transform:none}34%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes s2{0%,34%{opacity:0;transform:translateY(8px)}38%,64%{opacity:1;transform:none}68%,100%{opacity:0;transform:translateY(-8px)}}
+@keyframes s3{0%,68%{opacity:0;transform:translateY(8px)}72%,100%{opacity:1;transform:none}}
+
+.pct{background:#fff;border:2.5px solid var(--ink);border-radius:10px;padding:3px 10px;box-shadow:3px 3px 0 var(--ink);
+  font-weight:700;font-size:15px;min-width:48px;text-align:center;font-variant-numeric:tabular-nums}
+.pct::after{counter-reset:n var(--n);content:counter(n) "%"}
+.play .pct{animation:cnt 6s .2s both}
+@keyframes cnt{0%{--n:0}28%{--n:36}40%{--n:38}66%{--n:78}78%{--n:82}100%{--n:100}}
+
+.track{position:relative;height:26px;background:#fff;border:2.5px solid var(--ink);border-radius:99px;box-shadow:3.5px 3.5px 0 var(--ink)}
+.fw{position:absolute;left:0;top:0;bottom:0;width:100%}
+.play .fw{animation:grow 6s .2s both}
+@keyframes grow{0%{width:0}28%{width:36%}40%{width:38%}66%{width:78%}78%{width:82%}100%{width:100%}}
+.fb{position:absolute;inset:0;border-radius:99px;border-right:2.5px solid var(--ink);box-sizing:border-box;
+  background:repeating-linear-gradient(-45deg,rgba(28,28,23,.16) 0 8px,transparent 8px 16px),var(--yellow)}
+.play .fb{animation:slide .6s linear infinite}
+@keyframes slide{to{background-position:22px 0,0 0}}
+.ticks{position:absolute;inset:0;border-radius:99px;pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent 0 calc(10% - 1.5px),rgba(28,28,23,.25) calc(10% - 1.5px) 10%)}
+
+.mk2{position:absolute;right:0;top:50%;width:34px;height:34px;margin:-17px -17px 0 0;opacity:0}
+.play .mk2{animation:vanish 6s .2s both}
+@keyframes vanish{0%,93%{opacity:1;transform:scale(1)}100%{opacity:0;transform:scale(0)}}
+.mk2 svg{width:100%;height:100%;display:block}
+.play .mk2 svg{animation:spin 1.1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Controls bar */
+.bottom-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 14px;
+  background: var(--surface);
+  border-top: 2.5px solid var(--ink);
+  z-index: 25;
+}
+.btn-control {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--ink);
+  background: var(--yellow);
+  border: 2px solid var(--ink);
+  padding: 8px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--ink);
+  transition: transform .08s, box-shadow .08s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-control:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--ink);
+}
+.btn-secondary {
+  background: #fff;
+}
+.badge-version {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink);
+  background: #6bf6ff;
+  border: 2px solid var(--ink);
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 2px 2px 0 var(--ink);
+}
+
+@media (prefers-reduced-motion:reduce){
+  .play *,.play{animation:none!important}
+  #ribbons{opacity:.25}
+}
+</style>
+</head>
+<body>
+<div class="app-screen" style="max-width: 100%; width: 100vw; height: 100vh; box-shadow: none;">
+<!-- Top Wayuu tribal ribbon -->
+<!-- Animated Stage Area -->
+<div class="stage-wrapper play" id="stage">
+<svg aria-label="Animación de inicio de aciertaPro" class="canvas-svg" preserveaspectratio="xMidYMid slice" role="img" viewbox="0 0 360 640">
+<defs>
+<pattern height="16" id="dots" patternunits="userSpaceOnUse" width="16"><circle cx="2" cy="2" fill="#1c1c17" opacity=".09" r="1.3"></circle></pattern>
+<pattern height="12" id="triA" patterntransform="rotate(45)" patternunits="userSpaceOnUse" width="14"><path d="M3,11L7,1L11,11Z" fill="#ffd13b"></path><path d="M-4,1L4,1L0,11Z M10,1L18,1L14,11Z" fill="#ffd13b" opacity=".5"></path></pattern>
+<pattern height="12" id="triB" patterntransform="rotate(-45)" patternunits="userSpaceOnUse" width="14"><path d="M3,11L7,1L11,11Z" fill="#ffd13b"></path><path d="M-4,1L4,1L0,11Z M10,1L18,1L14,11Z" fill="#ffc7da" opacity=".8"></path></pattern>
+<g fill="none" id="ribA" stroke-linejoin="round">
+<path class="dr a" d="M240,-120L120,0L240,120L120,240L240,360L120,480L240,600L120,720" pathlength="1" stroke="#1c1c17" stroke-width="40"></path>
+<path class="dr a" d="M240,-120L120,0L240,120L120,240L240,360L120,480L240,600L120,720" pathlength="1" stroke="#6bf6ff" stroke-width="31"></path>
+<path class="dr a" d="M240,-120L120,0L240,120L120,240L240,360L120,480L240,600L120,720" pathlength="1" stroke="#00696e" stroke-width="23"></path>
+<path class="dr a" d="M240,-120L120,0L240,120L120,240L240,360L120,480L240,600L120,720" pathlength="1" stroke="url(#triA)" stroke-width="23"></path>
+</g>
+<clippath id="cx"><circle cx="180" cy="60" r="31"></circle><circle cx="180" cy="300" r="31"></circle><circle cx="180" cy="540" r="31"></circle></clippath>
+</defs>
+<rect fill="url(#dots)" height="640" width="360"></rect>
+<!-- Braided ribbons background -->
+<g id="ribbons">
+<use href="#ribA"></use>
+<g fill="none" stroke-linejoin="round">
+<path class="dr b" d="M120,-120L240,0L120,120L240,240L120,360L240,480L120,600L240,720" pathlength="1" stroke="#1c1c17" stroke-width="40"></path>
+<path class="dr b" d="M120,-120L240,0L120,120L240,240L120,360L240,480L120,600L240,720" pathlength="1" stroke="#ffd13b" stroke-width="31"></path>
+<path class="dr b" d="M120,-120L240,0L120,120L240,240L120,360L240,480L120,600L240,720" pathlength="1" stroke="#b7006e" stroke-width="23"></path>
+<path class="dr b" d="M120,-120L240,0L120,120L240,240L120,360L240,480L120,600L240,720" pathlength="1" stroke="url(#triB)" stroke-width="23"></path>
+</g>
+<g class="over" clip-path="url(#cx)"><use href="#ribA"></use></g>
+</g>
+<!-- Central Emblem & Burst Elements -->
+<g transform="translate(180 250)">
+<g class="sticker">
+<circle cx="7" cy="7" fill="#1c1c17" r="100"></circle>
+<circle fill="#fdf9f1" r="100" stroke="#1c1c17" stroke-width="5"></circle>
+<circle fill="none" r="86" stroke="#1c1c17" stroke-dasharray="3 9" stroke-linecap="round" stroke-width="2.5"></circle>
+</g>
+<!-- Confetti & geometric sparkles -->
+<g class="cf" style="--x:-128px;--y:-92px"><path d="M0,-11L10,8L-10,8Z" fill="#ffd13b" stroke="#1c1c17" stroke-linejoin="round" stroke-width="3"></path></g>
+<g class="cf" style="--x:132px;--y:-78px"><circle fill="#6bf6ff" r="8" stroke="#1c1c17" stroke-width="3"></circle></g>
+<g class="cf" style="--x:-138px;--y:46px"><rect fill="#b7006e" height="16" rx="3" stroke="#1c1c17" stroke-width="3" width="16" x="-8" y="-8"></rect></g>
+<g class="cf" style="--x:136px;--y:62px"><path d="M0,-11L10,8L-10,8Z" fill="#6bf6ff" stroke="#1c1c17" stroke-linejoin="round" stroke-width="3"></path></g>
+<g class="cf" style="--x:-62px;--y:-138px"><circle fill="#ffd13b" r="7" stroke="#1c1c17" stroke-width="3"></circle></g>
+<g class="cf" style="--x:78px;--y:-136px"><rect fill="#ffc7da" height="16" rx="3" stroke="#1c1c17" stroke-width="3" width="16" x="-8" y="-8"></rect></g>
+<g class="cf" style="--x:-84px;--y:112px"><path d="M0,-11L10,8L-10,8Z" fill="#b7006e" stroke="#1c1c17" stroke-linejoin="round" stroke-width="3"></path></g>
+<g class="cf" style="--x:88px;--y:116px"><circle fill="#ffd13b" r="8" stroke="#1c1c17" stroke-width="3"></circle></g>
+<!-- Logo diamonds & checkmark -->
+<g class="logo">
+<path d="M6,-56L62,0L6,62L-50,6Z" fill="#1c1c17" stroke="#1c1c17" stroke-linejoin="round" stroke-width="8"></path>
+<path d="M0,-62L62,0L0,62L-62,0Z" fill="#ffd13b" stroke="#1c1c17" stroke-linejoin="round" stroke-width="6"></path>
+<path d="M0,-44L44,0L0,44L-44,0Z" fill="#6bf6ff" stroke="#1c1c17" stroke-linejoin="round" stroke-width="4.5"></path>
+<path d="M0,-28L28,0L0,28L-28,0Z" fill="#b7006e" stroke="#1c1c17" stroke-linejoin="round" stroke-width="4.5"></path>
+<path class="tick" d="M-13,2L-4,13L15,-12" fill="none" pathlength="1" stroke="#1c1c17" stroke-linecap="round" stroke-linejoin="round" stroke-width="15"></path>
+<path class="tick" d="M-13,2L-4,13L15,-12" fill="none" pathlength="1" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="8"></path>
+</g>
+</g>
+</svg>
+<!-- Japanese Kana micro-accents from design system -->
+<!-- UI: App Title & Tagline -->
+<div class="ui">
+<div aria-label="aciertaPro" class="word">
+<span aria-hidden="true"><span class="l" style="--i:0">a</span><span class="l" style="--i:1">c</span><span class="l" style="--i:2">i</span><span class="l" style="--i:3">e</span><span class="l" style="--i:4">r</span><span class="l" style="--i:5">t</span><span class="l" style="--i:6">a</span></span>
+<span aria-hidden="true" class="pill">Pro</span>
+</div>
+<div class="tagline">Ingeniería de Sistemas · Saber Pro</div>
+</div>
+<!-- Progress Loader & Counter -->
+<div aria-hidden="true" class="loader">
+<div class="lrow">
+<div class="lab"><span class="s1">Calentando motores</span><span class="s2">Afinando tu simulacro</span><span class="s3">¡Listo para acertar!</span></div>
+<div class="pct"></div>
+</div>
+<div class="track">
+<div class="fw">
+<div class="fb"></div>
+<div class="mk2">
+<svg viewbox="-20 -20 40 40">
+<path d="M0,-17L17,0L0,17L-17,0Z" fill="#ffd13b" stroke="#1c1c17" stroke-linejoin="round" stroke-width="3"></path>
+<path d="M0,-10L10,0L0,10L-10,0Z" fill="#6bf6ff" stroke="#1c1c17" stroke-linejoin="round" stroke-width="2.5"></path>
+<path d="M0,-4.5L4.5,0L0,4.5L-4.5,0Z" fill="#b7006e" stroke="#1c1c17" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<div class="ticks"></div>
+</div>
+</div>
+</div>
+<!-- Bottom interactive controls -->
+</div>
+<script>
+  // Replay animation trigger
+  document.getElementById('re').addEventListener('click', function(){
+    var s = document.getElementById('stage');
+    s.classList.remove('play');
+    void s.getBoundingClientRect();
+    s.classList.add('play');
+  });
+
+  // Entrance action mock
+  document.getElementById('enterApp').addEventListener('click', function(){
+    var btn = this;
+    btn.innerText = 'Cargando...';
+    setTimeout(function(){
+      btn.innerText = '¡Vamos!';
+    }, 600);
+  });
+</script>
+</body>
+</html>
